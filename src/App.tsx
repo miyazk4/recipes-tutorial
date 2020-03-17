@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from "react";
+import "./css-reset.scss";
 import "./App.scss";
 import Recipe from "./components/recipes";
 
@@ -13,10 +14,8 @@ interface RecipeData {
 }
 
 interface Ingredient {
-  ingredients: {
-    text: string;
-    weight?: number;
-  };
+  text: string;
+  weight?: number;
 }
 
 const App = () => {
@@ -29,10 +28,10 @@ const App = () => {
   const [query, setQuery] = useState("chicken");
 
   useEffect(() => {
-    getRecipes();
+    getRecipes(query);
   }, [query]); // só faz update depois de submeter
 
-  const getRecipes = async () => {
+  const getRecipes = async (q: string) => {
     const response = await fetch(
       `https://api.edamam.com/search?q=${query}&app_id=${APP_ID}&app_key=${APP_KEY}`
     );
@@ -66,15 +65,17 @@ const App = () => {
           Search
         </button>
       </form>
-      {recipes.map(reciData => (
-        <Recipe
-          key={reciData.recipe.label}
-          title={reciData.recipe.label}
-          calories={reciData.recipe.calories}
-          image={reciData.recipe.image}
-          /*ingredients={reciData.recipe.ingredients}*/
-        />
-      ))}
+      <div className="recipeData">
+        {recipes.map(reciData => (
+          <Recipe
+            key={reciData.recipe.label}
+            title={reciData.recipe.label}
+            calories={reciData.recipe.calories}
+            image={reciData.recipe.image}
+            ingredients={reciData.recipe.ingredients}
+          />
+        ))}
+      </div>
     </div>
   );
 };

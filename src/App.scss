@@ -1,3 +1,31 @@
 .App {
   min-height: 100vh;
+  background-color: #d1c0be;
+}
+
+.search-form {
+  display: flex;
+  flex-wrap: nowrap;
+  min-height: 10vh;
+  justify-content: center;
+  align-items: center;
+
+  & .search-bar {
+    width: 30%;
+    border: none;
+    padding: 10px;
+  }
+
+  & .search-btn {
+    padding: 10px;
+    border: 0;
+    border-left: 1px solid #ddd;
+    font-family: Verdana;
+    font-weight: bold;
+  }
+}
+
+.recipeData {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
 }

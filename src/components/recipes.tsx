@@ -1,29 +1,31 @@
 import React from "react";
+import styles from "./recipes.module.scss";
 
 interface RecipesProps {
   title: string;
   calories: number;
   image: string;
-  /*ingredients: {
+  ingredients: {
     text: string;
     weight?: number | undefined;
-  }; */
+  }[];
 }
 
 /* voltar a colocar dps - adicionar ingredients ao props 
-    ol>
+    
+*/
+
+const Recipe = ({ title, calories, image, ingredients }: RecipesProps) => {
+  return (
+    <div className={styles.recipe}>
+      <h1>{title}</h1>
+      <ol>
         {ingredients.map(ingredient => (
           <li>{ingredient.text}</li>
         ))}
       </ol>
-*/
-
-const Recipe = ({ title, calories, image }: RecipesProps) => {
-  return (
-    <div>
-      <h1>{title}</h1>
-      <p>{calories}</p>
-      <img src={image} alt="" />
+      <p>Calories: {calories}</p>
+      <img src={image} alt={title} />
     </div>
   );
 };
