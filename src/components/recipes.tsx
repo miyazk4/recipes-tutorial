@@ -4,7 +4,19 @@ interface RecipesProps {
   title: string;
   calories: number;
   image: string;
+  /*ingredients: {
+    text: string;
+    weight?: number | undefined;
+  }; */
 }
+
+/* voltar a colocar dps - adicionar ingredients ao props 
+    ol>
+        {ingredients.map(ingredient => (
+          <li>{ingredient.text}</li>
+        ))}
+      </ol>
+*/
 
 const Recipe = ({ title, calories, image }: RecipesProps) => {
   return (
